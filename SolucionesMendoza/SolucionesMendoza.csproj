@@ -73,18 +73,61 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="jquery\jquery-1.10.2.js" />
+    <Content Include="jquery\jquery-ui-1.10.4.custom.js" />
+    <Content Include="jquery\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="UI\Registros\rCuentasBancarias.aspx" />
+    <Content Include="UI\Registros\rDepositos.aspx" />
+    <Content Include="UI\Registros\rPrestamo.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Principal.Master.cs">
+      <DependentUpon>Principal.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Principal.Master.designer.cs">
+      <DependentUpon>Principal.Master</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Registros\rCuentasBancarias.aspx.cs">
+      <DependentUpon>rCuentasBancarias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Registros\rCuentasBancarias.aspx.designer.cs">
+      <DependentUpon>rCuentasBancarias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Registros\rDepositos.aspx.cs">
+      <DependentUpon>rDepositos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Registros\rDepositos.aspx.designer.cs">
+      <DependentUpon>rDepositos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Registros\rPrestamo.aspx.cs">
+      <DependentUpon>rPrestamo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Registros\rPrestamo.aspx.designer.cs">
+      <DependentUpon>rPrestamo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Utilitarios\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="Principal.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
