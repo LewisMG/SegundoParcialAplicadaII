@@ -12,8 +12,8 @@
                 <asp:Label Text="Filtro" ForeColor="#0099FF" runat="server" />
                 <asp:DropDownList ID="FiltroDropDownList" CssClass="form-control" runat="server">
                     <asp:ListItem>Todo</asp:ListItem>
-                    <asp:ListItem>PrestamoId</asp:ListItem>
-                    <asp:ListItem>CuentaId</asp:ListItem>
+                    <asp:ListItem>PrestamoID</asp:ListItem>
+                    <asp:ListItem>CuentaBancariaId</asp:ListItem>
                     <asp:ListItem>Capital</asp:ListItem>
                     <asp:ListItem>pInteres</asp:ListItem>
                     <asp:ListItem>CantMeses</asp:ListItem>
@@ -26,7 +26,7 @@
 
             <div class="col-sm-2">
                 <br>
-                <asp:Button ID="BtnBuscar" class="form-control btn btn-primary btn-sm" runat="server" Text="Buscar" />
+                <asp:Button ID="BtnBuscar" class="form-control btn btn-primary btn-sm" runat="server" Text="Buscar" OnClick="BtnBuscar_Click" />
             </div>
         </div>
         <div class="form-row justify-content-center">
@@ -45,7 +45,7 @@
             <asp:GridView ID="PrestamoGridView" runat="server" class="table table-condensed table-bordered table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="LightSkyBlue" />
                 <Columns>
-                    <asp:BoundField DataField="PrestamoId" HeaderText="Prestamo Id" />
+                    <asp:BoundField DataField="PrestamoID" HeaderText="PrestamoID" />
                     <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
                     <asp:BoundField DataField="CuentaBancariaId" HeaderText="Cuenta Id" />
                     <asp:BoundField DataField="Capital" HeaderText="Capital" />
@@ -54,6 +54,14 @@
                 </Columns>
                 <HeaderStyle BackColor="LightCyan" Font-Bold="True" />
             </asp:GridView>
+        </div>
+        <hr>
+        <div class="panel">
+            <div class="text-center">
+                <div class="form-group">
+                    <asp:Button ID="ButtonImprimir" class="form-control btn btn-primary btn-sm" runat="server" Text="Imprimir Reporte" />
+                </div>
+            </div>
         </div>
         <hr>
     </div>

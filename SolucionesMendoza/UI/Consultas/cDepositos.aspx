@@ -24,7 +24,7 @@
             
             <div class="col-sm-2">
                 <br>
-                <asp:Button ID="BtnBuscar" class="form-control btn btn-primary btn-sm" runat="server" Text="Buscar"/>
+                <asp:Button ID="BtnBuscar" class="form-control btn btn-primary btn-sm" runat="server" Text="Buscar" OnClick="BtnBuscar_Click"/>
             </div>
         </div>
         <div class="form-row justify-content-center">
@@ -51,6 +51,14 @@
                 </Columns>
                 <HeaderStyle BackColor="LightCyan" Font-Bold="True" />
             </asp:GridView>
+        </div>
+        <hr>
+        <div class="panel">
+            <div class="text-center">
+                <div class="form-group">
+                    <asp:Button ID="ButtonImprimir" class="form-control btn btn-primary btn-sm" runat="server" Text="Imprimir Reporte" />
+                </div>
+            </div>
         </div>
         <hr>
     </div>
