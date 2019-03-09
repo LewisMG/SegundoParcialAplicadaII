@@ -157,6 +157,33 @@ namespace SolucionesMendoza.UI.Registros {
         protected global::System.Web.UI.WebControls.Button ButtonAgregar;
         
         /// <summary>
+        /// PrestamoGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView PrestamoGridView;
+        
+        /// <summary>
+        /// NombreLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label NombreLabel;
+        
+        /// <summary>
+        /// MontoLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MontoLabel;
+        
+        /// <summary>
         /// BtnNuevo control.
         /// </summary>
         /// <remarks>

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entidade
 {
+    [Serializable]
     public class CuentasBancarias
     {
         [Key]

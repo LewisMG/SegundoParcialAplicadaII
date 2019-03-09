@@ -10,10 +10,10 @@ namespace Entidade
     public class Prestamo
     {
         public int PrestamoID { get; set; }
-        public DateTime Feha { get; set; }
+        public DateTime Fecha { get; set; }
         public int CuentaBancariaId { get; set; }
         public int Capital { get; set; }
-        public decimal pInteres { get; set; }
+        public double pInteres { get; set; }
         public int CantMeses { get; set; }
         public int MontoTotal { get; set; }
 
@@ -24,9 +24,9 @@ namespace Entidade
             this.Detalle = new List<Cuotas>();
         }
 
-        public void AgregarDetalle(int CuotaID, DateTime Fecha, int CuentaBancariaId, double Interes, double Capital, double Balance)
+        public void AgregarDetalle(int CuotaID, DateTime Fecha, int PrestamoID, int NoCuotas, int CuentaBancariaId, double Interes, double Capital, double Balance)
         {
-            this.Detalle.Add(new Cuotas(CuotaID, Fecha, CuentaBancariaId, Interes, Capital, Balance));
+            this.Detalle.Add(new Cuotas(CuotaID, Fecha, PrestamoID, NoCuotas, CuentaBancariaId, Interes, Capital, Balance));
         }
     }
 }

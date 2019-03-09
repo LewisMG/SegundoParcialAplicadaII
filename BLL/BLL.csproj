@@ -51,6 +51,7 @@
     <Compile Include="DepositoRepositorio.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Metodos.cs" />
+    <Compile Include="PrestamoRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositorioBase.cs" />
   </ItemGroup>

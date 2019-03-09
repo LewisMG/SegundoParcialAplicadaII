@@ -78,9 +78,12 @@
     <Content Include="jquery\jquery-1.10.2.js" />
     <Content Include="jquery\jquery-ui-1.10.4.custom.js" />
     <Content Include="jquery\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="UI\Consultas\cCuentasBancarias.aspx" />
+    <Content Include="UI\Consultas\cDepositos.aspx" />
+    <Content Include="UI\Consultas\cPrestamos.aspx" />
     <Content Include="UI\Registros\rCuentasBancarias.aspx" />
     <Content Include="UI\Registros\rDepositos.aspx" />
-    <Content Include="UI\Registros\rPrestamo.aspx" />
+    <Content Include="UI\Registros\rPrestamos.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +105,27 @@
       <DependentUpon>Principal.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Consultas\cCuentasBancarias.aspx.cs">
+      <DependentUpon>cCuentasBancarias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Consultas\cCuentasBancarias.aspx.designer.cs">
+      <DependentUpon>cCuentasBancarias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Consultas\cDepositos.aspx.cs">
+      <DependentUpon>cDepositos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Consultas\cDepositos.aspx.designer.cs">
+      <DependentUpon>cDepositos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Consultas\cPrestamos.aspx.cs">
+      <DependentUpon>cPrestamos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Consultas\cPrestamos.aspx.designer.cs">
+      <DependentUpon>cPrestamos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\Registros\rCuentasBancarias.aspx.cs">
       <DependentUpon>rCuentasBancarias.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -116,12 +140,12 @@
     <Compile Include="UI\Registros\rDepositos.aspx.designer.cs">
       <DependentUpon>rDepositos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UI\Registros\rPrestamo.aspx.cs">
-      <DependentUpon>rPrestamo.aspx</DependentUpon>
+    <Compile Include="UI\Registros\rPrestamos.aspx.cs">
+      <DependentUpon>rPrestamos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\Registros\rPrestamo.aspx.designer.cs">
-      <DependentUpon>rPrestamo.aspx</DependentUpon>
+    <Compile Include="UI\Registros\rPrestamos.aspx.designer.cs">
+      <DependentUpon>rPrestamos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Utilitarios\Utils.cs" />
   </ItemGroup>
@@ -138,6 +162,16 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{E07C2632-0BA1-44F3-9BCD-F6C457F828DB}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entidade\Entidade.csproj">
+      <Project>{2FC443A1-8C8B-4C5E-9CF8-1D830C1AE44A}</Project>
+      <Name>Entidade</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

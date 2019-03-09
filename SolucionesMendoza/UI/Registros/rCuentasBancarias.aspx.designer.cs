@@ -40,13 +40,13 @@ namespace SolucionesMendoza.UI.Registros {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator CBTextBoxRegularExpressionValidator;
         
         /// <summary>
-        /// BuscarButton control.
+        /// BtnBuscar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BuscarButton;
+        protected global::System.Web.UI.WebControls.Button BtnBuscar;
         
         /// <summary>
         /// FechaTextBox control.
