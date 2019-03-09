@@ -4,6 +4,7 @@ using SolucionesMendoza.Utilitarios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -55,6 +56,11 @@ namespace SolucionesMendoza.UI.Registros
             CuentasBancarias cuentasbancarias = new CuentasBancarias();
             bool paso = false;
 
+            if (Verificar())
+            {
+                Utils.ShowToastr(this, "Solo Letras!", "Error", "error");
+                return;
+            }
             cuentasbancarias = LlenaClase();
 
             if (cuentasbancarias.CuentaBancariaId == 0)
@@ -128,6 +134,18 @@ namespace SolucionesMendoza.UI.Registros
                 Utils.ShowToastr(this, "Id No Puede Ser Cero", "Error", "error");
             }
 
+        }
+
+        private bool Verificar()
+        {
+            bool paso = false;
+            bool resultado = Regex.IsMatch(NombreTextBox.Text, @"^[a-zA-Z]+$");
+            if (!resultado)
+            {
+                Utils.ShowToastr(this, "Solo Letras", "Fallo", "error");
+                paso = true;
+            }
+            return paso;
         }
 
     }

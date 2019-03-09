@@ -4,6 +4,7 @@ using SolucionesMendoza.Utilitarios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -19,6 +20,7 @@ namespace SolucionesMendoza.UI.Registros
                 LlenarDropDownList();
                 FechaTextBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 PrestamoidTextBox.Text = "0";
+                MontoLabel.Text = "0";
             }
         }
 
@@ -102,12 +104,12 @@ namespace SolucionesMendoza.UI.Registros
         protected void ButtonAgregar_Click(object sender, EventArgs e)
         {
             Prestamo Presta = new Prestamo();
-            
+
             double capital = Convert.ToDouble(CapitalTextBox.Text);
             double interes = Convert.ToDouble(InteresTextBox.Text) / 100;
             int plazo = Utils.ToInt(CantMesesTextBox.Text);
             double interesMensual = (interes * capital) / plazo;
-           
+
 
             double Balance = 0;
             DateTime Fecha = DateTime.Now.Date;
@@ -115,7 +117,7 @@ namespace SolucionesMendoza.UI.Registros
             montoCapital = capital / plazo;
             //Formula para Generar numeros de cuotas
             double cuota = capital / plazo;
-            
+
             double interesTotal = interesMensual * plazo;
             Balance = capital + interesTotal;
             double amortizacion = 0;
@@ -136,7 +138,7 @@ namespace SolucionesMendoza.UI.Registros
 
                 this.BindGrid();
             }
-            
+
             double resultado = capital + (interesMensual * plazo);
             MontoLabel.Text = resultado.ToString();
         }
@@ -145,6 +147,7 @@ namespace SolucionesMendoza.UI.Registros
         {
             LimpiarCampos();
         }
+
 
         protected void BtnGuardar_Click(object sender, EventArgs e)
         {
@@ -159,11 +162,15 @@ namespace SolucionesMendoza.UI.Registros
 
                 if (Page.IsValid)
                 {
-                    if (PrestamoidTextBox.Text == "0")
+                    if (PrestamoidTextBox.Text == "0" && Utils.ToInt(MontoLabel.Text) != 0)
                     {
                         paso = repositorio.Guardar(prestamo);
                     }
-                    else
+                    else if(Utils.ToInt(MontoLabel.Text) == 0)
+                    {
+                        Utils.ShowToastr(this, "Presionar Boton Calcular Antes de Guardar ", "Fallo", "error");
+                    }
+                    else if (Utils.ToInt(PrestamoidTextBox.Text) != 0)
                     {
                         var verificar = repositorio.Buscar(Utils.ToInt(PrestamoidTextBox.Text));
                         if (verificar != null)
