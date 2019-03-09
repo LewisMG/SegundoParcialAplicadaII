@@ -139,9 +139,19 @@ namespace SolucionesMendoza.UI.Registros
         private bool Verificar()
         {
             bool paso = false;
-            bool resultado = Regex.IsMatch(NombreTextBox.Text, @"^[a-zA-Z]+$");
+            bool resultado = Regex.IsMatch(NombreTextBox.Text, @"^[a-z A-Z]+$");
             if (!resultado)
             {
+                resultado = Regex.IsMatch(NombreTextBox.Text, @"^[a-z A-Z]+$");
+                if (resultado)
+                {
+                    paso = false;
+                }
+                else
+                {
+                    paso = true;
+                    Utils.ShowToastr(this, "Solo Letras", "Fallo", "error");
+                }
                 Utils.ShowToastr(this, "Solo Letras", "Fallo", "error");
                 paso = true;
             }

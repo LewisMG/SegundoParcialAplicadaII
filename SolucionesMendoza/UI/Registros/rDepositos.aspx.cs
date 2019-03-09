@@ -4,6 +4,7 @@ using SolucionesMendoza.Utilitarios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -90,13 +91,41 @@ namespace SolucionesMendoza.UI.Registros
             LimpiarCampos();
         }
 
+        private bool Verificar()
+        {
+            bool paso = false;
+            bool resultado = Regex.IsMatch(ConceptoTextBox.Text, @"^[a-z A-Z]+$");
+            if (!resultado)
+            {
+                resultado = Regex.IsMatch(ConceptoTextBox.Text, @"^[a-z A-Z]+$");
+                if (resultado)
+                {
+                    paso = false;
+                }
+                else
+                {
+                    paso = true;
+                    Utils.ShowToastr(this, "Solo Letras", "Fallo", "error");
+                }
+                Utils.ShowToastr(this, "Solo Letras", "Fallo", "error");
+                paso = true;
+            }
+            return paso;
+        }
+
         protected void BtnGuardar_Click1(object sender, EventArgs e)
         {
             DepositoRepositorio repositorio = new DepositoRepositorio();
             Depositos depositos = LlenaClase();
             RepositorioBase<CuentasBancarias> cuentas = new RepositorioBase<CuentasBancarias>();
-
+            
             bool paso = false;
+
+            if (Verificar())
+            {
+                Utils.ShowToastr(this, "Solo Letras!", "Error", "error");
+                return;
+            }
 
             if (cuentaDropDownList != null)
             {
