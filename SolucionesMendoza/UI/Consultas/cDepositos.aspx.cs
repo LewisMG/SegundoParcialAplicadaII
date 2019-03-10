@@ -39,5 +39,10 @@ namespace SolucionesMendoza.UI.Consultas
 
             CriterioTextBox.Text = FiltroDropDownList.Text.ToString();
         }
+
+        protected void ButtonImprimir_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/UI/Reportes/ListadodeDepositos.aspx");
+        }
     }
 }

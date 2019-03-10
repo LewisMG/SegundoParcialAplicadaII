@@ -56,7 +56,7 @@
         <div class="panel">
             <div class="text-center">
                 <div class="form-group">
-                    <asp:Button ID="ButtonImprimir" class="form-control btn btn-primary btn-sm" runat="server" Text="Imprimir Reporte" />
+                    <asp:Button ID="ButtonImprimir" class="form-control btn btn-primary btn-sm" runat="server" Text="Imprimir Reporte" OnClick="ButtonImprimir_Click" />
                 </div>
             </div>
         </div>

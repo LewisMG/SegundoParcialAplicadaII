@@ -11,6 +11,8 @@ namespace SolucionesMendoza.UI.Consultas
 {
     public partial class cCuentasBancarias : System.Web.UI.Page
     {
+        //public static List<CuentasBancarias> listCategorias { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -38,6 +40,11 @@ namespace SolucionesMendoza.UI.Consultas
             CBGridView.DataBind();
 
             CriterioTextBox.Text = FiltroDropDownList.Text.ToString();
+        }
+
+        protected void ButtonImprimir_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/UI/Reportes/ListadoDeCuentas.aspx");
         }
     }
 }
