@@ -42,7 +42,7 @@
         <hr>
 
         <div class="form-row justify-content-center">
-            <asp:GridView ID="PrestamoGridView" runat="server" class="table table-condensed table-bordered table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <asp:GridView ID="PrestamoGridView" runat="server" class="table table-condensed table-bordered table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="PrestamoGridView_SelectedIndexChanged">
                 <AlternatingRowStyle BackColor="LightSkyBlue" />
                 <Columns>
                     <asp:BoundField DataField="PrestamoID" HeaderText="PrestamoID" />
@@ -59,7 +59,7 @@
         <div class="panel">
             <div class="text-center">
                 <div class="form-group">
-                    <asp:Button ID="ButtonImprimir" class="form-control btn btn-primary btn-sm" runat="server" Text="Imprimir Reporte" />
+                    <asp:Button ID="ButtonImprimir" class="form-control btn btn-primary btn-sm" runat="server" Text="Imprimir Reporte" OnClick="ButtonImprimir_Click" />
                 </div>
             </div>
         </div>

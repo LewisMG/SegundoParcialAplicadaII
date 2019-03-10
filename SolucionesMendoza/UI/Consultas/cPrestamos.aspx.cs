@@ -39,5 +39,15 @@ namespace SolucionesMendoza.UI.Consultas
 
             CriterioTextBox.Text = FiltroDropDownList.Text.ToString();
         }
+
+        protected void PrestamoGridView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ButtonImprimir_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/UI/Reportes/ListadoDePrestamos.aspx");
+        }
     }
 }

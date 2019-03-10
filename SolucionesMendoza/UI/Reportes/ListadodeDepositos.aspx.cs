@@ -13,26 +13,21 @@ namespace SolucionesMendoza.UI.Reportes
 {
     public partial class ListadodeDepositos : System.Web.UI.Page
     {
-        Expression<Func<Depositos, bool>> filtro = p => true;
+        RepositorioBase<Depositos> repositorio = new BLL.RepositorioBase<Depositos>();
         protected void Page_Load(object sender, EventArgs e)
         {
-            DepositosReportViewer.ProcessingMode = ProcessingMode.Local;
-            DepositosReportViewer.Reset();
-            DepositosReportViewer.LocalReport.ReportPath = Server.MapPath(@"~\UI\Reportes\ListadoDeDepositos.rdlc");
-            DepositosReportViewer.LocalReport.DataSources.Clear();
-            DepositosReportViewer.LocalReport.DataSources.Add(new ReportDataSource("DepositosDataSet", GetDepositos(filtro)));
-            DepositosReportViewer.LocalReport.Refresh();
-        }
+            if (!Page.IsPostBack)
+            {
+                DepositosReportViewer.ProcessingMode = Microsoft.Reporting.WebForms.ProcessingMode.Local;
+                DepositosReportViewer.Reset();
 
-        public List<Depositos> GetDepositos(Expression<Func<Depositos, bool>> filtro)
-        {
-            filtro = p => true;
-            RepositorioBase<Depositos> repositorio = new RepositorioBase<Depositos>();
-            List<Depositos> listDepositos = new List<Depositos>();
+                DepositosReportViewer.LocalReport.ReportPath = Server.MapPath(@"~\UI\Reportes\ListadoDeDepositos.rdlc");
 
-            listDepositos = repositorio.GetList(filtro);
+                DepositosReportViewer.LocalReport.DataSources.Clear();
 
-            return listDepositos;
+                DepositosReportViewer.LocalReport.DataSources.Add(new ReportDataSource("DepositosDataSet", repositorio.GetList(x => true)));
+                DepositosReportViewer.LocalReport.Refresh();
+            }
         }
     }
 }

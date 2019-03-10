@@ -123,6 +123,8 @@
     <Content Include="UI\Registros\rPrestamos.aspx" />
     <Content Include="UI\Reportes\ListadoDeCuentas.aspx" />
     <Content Include="UI\Reportes\ListadodeDepositos.aspx" />
+    <Content Include="UI\Reportes\ListadoDePrestamos.aspx" />
+    <Content Include="Utilitarios\logoxs.JPG" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +132,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CuentasBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBPrestamosDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBPrestamosDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -216,6 +223,13 @@
     <Compile Include="UI\Reportes\ListadodeDepositos.aspx.designer.cs">
       <DependentUpon>ListadodeDepositos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\Reportes\ListadoDePrestamos.aspx.cs">
+      <DependentUpon>ListadoDePrestamos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Reportes\ListadoDePrestamos.aspx.designer.cs">
+      <DependentUpon>ListadoDePrestamos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Utilitarios\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -232,6 +246,17 @@
     </Content>
     <Content Include="DepositosDBDataSet.xsc">
       <DependentUpon>DepositosDBDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="DBPrestamosDataSet.xsc">
+      <DependentUpon>DBPrestamosDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="DBPrestamosDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBPrestamosDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="DBPrestamosDataSet.xss">
+      <DependentUpon>DBPrestamosDataSet.xsd</DependentUpon>
     </Content>
     <None Include="DepositosDBDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
@@ -278,6 +303,7 @@
   <ItemGroup>
     <EmbeddedResource Include="UI\Reportes\ListadoDeCuentas.rdlc" />
     <EmbeddedResource Include="UI\Reportes\ListadoDeDepositos.rdlc" />
+    <EmbeddedResource Include="UI\Reportes\ListadoDePrestamos.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

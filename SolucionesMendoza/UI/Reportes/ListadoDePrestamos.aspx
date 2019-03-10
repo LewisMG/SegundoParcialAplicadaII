@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ListadodeDepositos.aspx.cs" Inherits="SolucionesMendoza.UI.Reportes.ListadodeDepositos" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ListadoDePrestamos.aspx.cs" Inherits="SolucionesMendoza.UI.Reportes.ListadoDePrestamos" %>
 
 <%@ Register assembly="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" namespace="Microsoft.Reporting.WebForms" tagprefix="rsweb" %>
 
@@ -9,16 +9,16 @@
     <title></title>
     <style>
         html,body,form,#div1 {
-            height: 100%;
+            height: 100%;  
         }
-        </style>
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div id="div1">
+       <div id="div1">
             <asp:ScriptManager runat="server"></asp:ScriptManager> 
             
-            <rsweb:ReportViewer ID="DepositosReportViewer" runat="server" ProcessingMode="Remote" Height="800px" Width="1000px">
+            <rsweb:ReportViewer ID="PrestamoReportViewer" runat="server"  Height="800px" Width="1000px" ProcessingMode="Remote">
                 <ServerReport ReportPath="" ReportServerUrl="" />
             </rsweb:ReportViewer>
         </div>

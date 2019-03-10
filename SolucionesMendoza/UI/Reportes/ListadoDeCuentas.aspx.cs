@@ -13,26 +13,21 @@ namespace SolucionesMendoza.UI.Reportes
 {
     public partial class ListadoDeCuentas : System.Web.UI.Page
     {
-        Expression<Func<CuentasBancarias, bool>> filtro = p => true;
+        RepositorioBase<CuentasBancarias> repositorio = new BLL.RepositorioBase<CuentasBancarias>();
         protected void Page_Load(object sender, EventArgs e)
         {
-            CuentasReportViewer.ProcessingMode = ProcessingMode.Local;
-            CuentasReportViewer.Reset();
-            CuentasReportViewer.LocalReport.ReportPath = Server.MapPath(@"~\UI\Reportes\ListadoDeCuentas.rdlc");
-            CuentasReportViewer.LocalReport.DataSources.Clear();
-            CuentasReportViewer.LocalReport.DataSources.Add(new ReportDataSource("CuentasDataSet", GetCuentas(filtro)));
-            CuentasReportViewer.LocalReport.Refresh();
-        }
+            if (!Page.IsPostBack)
+            {
+                CuentasReportViewer.ProcessingMode = Microsoft.Reporting.WebForms.ProcessingMode.Local;
+                CuentasReportViewer.Reset();
 
-        public List<CuentasBancarias> GetCuentas(Expression<Func<CuentasBancarias, bool>> filtro)
-        {
-            filtro = p => true;
-            RepositorioBase<CuentasBancarias> repositorio = new RepositorioBase<CuentasBancarias>();
-            List<CuentasBancarias> listCuentas = new List<CuentasBancarias>();
+                CuentasReportViewer.LocalReport.ReportPath = Server.MapPath(@"~\UI\Reportes\ListadoDeCuentas.rdlc");
 
-            listCuentas = repositorio.GetList(filtro);
+                CuentasReportViewer.LocalReport.DataSources.Clear();
 
-            return listCuentas;
+                CuentasReportViewer.LocalReport.DataSources.Add(new ReportDataSource("CuentasDataSet", repositorio.GetList(x => true)));
+                CuentasReportViewer.LocalReport.Refresh();
+            }
         }
     }    
 }
