@@ -38,7 +38,7 @@
             <div class="form-group row">
                 <label class="control-label col-sm-2" for="CapitalTextBox">Capital:</label>
                 <div class="col-sm-1 col-md-5">
-                     <asp:TextBox type="Number" class="form-control" ID="CapitalTextBox" Placeholder="0" runat="server"></asp:TextBox>
+                     <asp:TextBox type="Number" class="form-control" ID="CapitalTextBox" placeholder="0" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="CapitalRequiredFieldValidator" runat="server" ErrorMessage="Ingrese solo numero!" ControlToValidate="CapitalTextBox" ValidationGroup="Guardar" Display="Dynamic" Font-Bold="True" ForeColor="Red">*</asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="CapitalRegularExpressionValidator" runat="server" ErrorMessage="Ingrese solo numeros!" ControlToValidate="CapitalTextBox" ValidationExpression="^[0-9]*$"></asp:RegularExpressionValidator>
                 </div>
@@ -47,7 +47,7 @@
             <div class="form-group row">
                 <label class="control-label col-sm-2" for="InteresTextBox">Interes:</label>
                 <div class="col-sm-1 col-md-4 col-xs6">
-                    <asp:TextBox type="Number" class="form-control" ID="InteresTextBox" Placeholder="0" runat="server"></asp:TextBox>
+                    <asp:TextBox type="Number" class="form-control" ID="InteresTextBox" placeholder="0" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="InteresRequiredFieldValidator" runat="server" ErrorMessage="Ingrese solo Numero!" ValidationGroup="Guardar" ControlToValidate="InteresTextBox" Display="Dynamic" Font-Bold="True" ForeColor="Red">*</asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="InteresRegularExpressionValidator" runat="server" ErrorMessage="Ingrese solo Numero!" ControlToValidate="InteresTextBox" ValidationExpression="^[0-9]*$"></asp:RegularExpressionValidator>
                 </div>
@@ -56,7 +56,7 @@
             <div class="form-group row">
                 <label class="control-label col-sm-2" for="CantMesesTextBox">Meses:</label>
                 <div class="col-sm-1 col-md-4 col-xs6">
-                    <asp:TextBox type="Number" class="form-control" ID="CantMesesTextBox" Placeholder="0" runat="server"></asp:TextBox>
+                    <asp:TextBox type="Number" class="form-control" ID="CantMesesTextBox" placeholder="0" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="CantMesesRequiredFieldValidator" runat="server" ErrorMessage="Ingrese solo numero!" ControlToValidate="CantMesesTextBox" ValidationGroup="Guardar" Display="Dynamic" Font-Bold="True" ForeColor="Red">*</asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="CantMesesRegularExpressionValidator" runat="server" ErrorMessage="Ingrese solo numeros!" ControlToValidate="CantMesesTextBox" ValidationExpression="^[0-9]*$"></asp:RegularExpressionValidator>
                 </div>

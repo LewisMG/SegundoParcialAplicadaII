@@ -13,14 +13,18 @@ namespace SolucionesMendoza.UI.Registros
 {
     public partial class rPrestamo : System.Web.UI.Page
     {
+        List<Cuotas> ListaDetalle = new List<Cuotas>();
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {            
             if (!Page.IsPostBack)
             {
+                PrestamoGridView.DataSource = null;
+                PrestamoGridView.DataBind();
                 LlenarDropDownList();
                 FechaTextBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 PrestamoidTextBox.Text = "0";
                 MontoLabel.Text = "0";
+                ViewState["Prestamo"] = new Prestamo();
             }
         }
 
@@ -34,6 +38,8 @@ namespace SolucionesMendoza.UI.Registros
             InteresTextBox.Text = prestamo.pInteres.ToString();
             CantMesesTextBox.Text = prestamo.CantMeses.ToString();
             MontoLabel.Text = prestamo.MontoTotal.ToString();
+            PrestamoGridView.DataSource = prestamo.Detalle.ToList();
+            this.BindGrid();
         }
 
         private Prestamo LlenaClase()
@@ -47,6 +53,7 @@ namespace SolucionesMendoza.UI.Registros
             prestamo.pInteres = Utils.ToInt(InteresTextBox.Text);
             prestamo.CantMeses = Utils.ToInt(CantMesesTextBox.Text);
             prestamo.MontoTotal = Utils.ToInt(MontoLabel.Text);
+            prestamo.Detalle = ListaDetalle;
 
             return prestamo;
         }
@@ -56,10 +63,12 @@ namespace SolucionesMendoza.UI.Registros
             PrestamoidTextBox.Text = "0";
             FechaTextBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
             cuentaDropDownList.SelectedIndex = 0;
-            CapitalTextBox.Text = "0";
-            InteresTextBox.Text = "0";
-            CantMesesTextBox.Text = "0";
+            CapitalTextBox.Text = "";
+            InteresTextBox.Text = "";
+            CantMesesTextBox.Text = "";
             MontoLabel.Text = "0";
+            ViewState["Prestamo"] = new Prestamo();
+            this.BindGrid();
         }
 
         private void LlenarDropDownList()
@@ -104,43 +113,36 @@ namespace SolucionesMendoza.UI.Registros
         protected void ButtonAgregar_Click(object sender, EventArgs e)
         {
             Prestamo Presta = new Prestamo();
-
-            double capital = Convert.ToDouble(CapitalTextBox.Text);
-            double interes = Convert.ToDouble(InteresTextBox.Text) / 100;
-            int plazo = Utils.ToInt(CantMesesTextBox.Text);
-            double interesMensual = (interes * capital) / plazo;
-
-
-            double Balance = 0;
-            DateTime Fecha = DateTime.Now.Date;
-            double montoCapital = 0;
-            montoCapital = capital / plazo;
-            //Formula para Generar numeros de cuotas
-            double cuota = capital / plazo;
-
-            double interesTotal = interesMensual * plazo;
-            Balance = capital + interesTotal;
-            double amortizacion = 0;
-            double amortizacionTotal = 0;
-            int i = 1;
-
-            for (i = 1; i <= plazo; i++)
+            if (Utils.ToInt(CapitalTextBox.Text) <= 0 || Utils.ToInt(InteresTextBox.Text) <= 0 || Utils.ToInt(CantMesesTextBox.Text) <= 0)
             {
-                Balance -= (cuota + interesMensual);
-
-                //Amortizaciones totales y principales
-                amortizacionTotal += cuota - interesMensual;
-
-                Presta = (Prestamo)ViewState["Prestamo"];
-                Presta.AgregarDetalle(0, Fecha.AddMonths(i), 1, i, Utils.ToInt(cuentaDropDownList.SelectedValue), interesMensual, cuota, Balance);
-
-                ViewState["Prestamo"] = Presta;
-
-                this.BindGrid();
+                Utils.ShowToastr(this, "LLene los campos vacios(Capital, Interes y Meses)", "Error", "error");                
             }
+            else
+            {
+                double capital = Convert.ToDouble(CapitalTextBox.Text);
+                double interes = Convert.ToDouble(InteresTextBox.Text) / 100;
+                int plazo = Utils.ToInt(CantMesesTextBox.Text);
+                double interesMensual = (interes * capital) / plazo;
+                double Balance = 0;
+                DateTime Fecha = DateTime.Now.Date;
+                double cuota = capital / plazo;
+                double interesTotal = interesMensual * plazo;
+                Balance = capital + interesTotal;
+                int i = 1;
+                for (i = 1; i <= plazo; i++)
+                {
+                    Balance -= (cuota + interesMensual);
 
-            double resultado = capital + (interesMensual * plazo);
-            MontoLabel.Text = resultado.ToString();
+                    Presta = (Prestamo)ViewState["Prestamo"];
+                    Presta.AgregarDetalle(0, Fecha.AddMonths(i), 1, i, Utils.ToInt(cuentaDropDownList.SelectedValue), interesMensual, cuota, Balance);
+
+                    ViewState["Prestamo"] = Presta;
+
+                    this.BindGrid();
+                }
+                double resultado = capital + (interesMensual * plazo);
+                MontoLabel.Text = resultado.ToString();
+            }
         }
 
         protected void BtnNuevo_Click(object sender, EventArgs e)
